@@ -9,21 +9,8 @@ function addDate(data) {
 
 http
     .createServer((req, res) => {
-        if (/jpg|png|gif|jpeg/.test(req.url)) {
+        if (/jpg|png|gif|jpeg|js/.test(req.url)) {
             fs.readFile(req.url.replace('/', ''), (err, data) => {
-                if (err) {
-                    res.end();
-                    throw new Error('Error while reading file: ' + err);
-                } else {
-                    res.end(data);
-                }
-            });
-
-            return;
-        }
-
-        if (/js/.test(req.url)) {
-            fs.readFile(req.url.replace('/', ''), 'utf-8', (err, data) => {
                 if (err) {
                     res.end();
                     throw new Error('Error while reading file: ' + err);
